@@ -49,7 +49,7 @@ export default function HeritagePage() {
             OUR <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-violet-600">HERITAGE</span>
           </h1>
           <p className="text-zinc-600 dark:text-zinc-400 text-lg sm:text-xl font-light leading-relaxed max-w-2xl mx-auto italic">
-            "A watch is not merely a tool for measuring seconds; it is a repository of history, a masterpiece of physics, and a testament to human ingenuity."
+            &quot;A watch is not merely a tool for measuring seconds; it is a repository of history, a masterpiece of physics, and a testament to human ingenuity.&quot;
           </p>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function HeritagePage() {
                 At W-Commerce, our journey began with a simple yet profound realization: time is the most precious commodity. For centuries, the craft of horology has sought to capture its essence within the confines of a mechanical movement.
               </p>
               <p>
-                We don't just sell watches; we curate legacies. Each timepiece in our collection represents a milestone in the evolution of engineering—from the early pocket watches that guided navigators to the tourbillons that defy gravity today.
+                We don&apos;t just sell watches; we curate legacies. Each timepiece in our collection represents a milestone in the evolution of engineering—from the early pocket watches that guided navigators to the tourbillons that defy gravity today.
               </p>
             </div>
           </div>

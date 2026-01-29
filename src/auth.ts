@@ -30,17 +30,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user }) {
       if (user) {
-        token.isAdmin = user.isAdmin;
+        token.isAdmin = (user as { isAdmin: boolean }).isAdmin;
         token.id = user.id;
       }
       return token;
     },
-    async session({ session, token }: any) {
+    async session({ session, token }) {
       if (session.user) {
-        session.user.isAdmin = token.isAdmin;
-        session.user.id = token.id;
+        session.user.isAdmin = token.isAdmin as boolean;
+        session.user.id = token.id as string;
       }
       return session;
     },

@@ -1,15 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
-interface Product {
-  name: string;
-  slug: string;
-  image: string;
-  price: number;
-  brand: string;
-  rating: number;
-  numReviews: number;
-}
+import { Product } from '@/types';
 
 export default function ProductItem({ product }: { product: Product }) {
   return (

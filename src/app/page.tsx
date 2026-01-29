@@ -1,26 +1,27 @@
 import ProductItem from "@/components/ProductItem";
 import connectDB from "@/lib/db";
-import Product from "@/lib/models/product.model";
+import ProductModel from "@/lib/models/product.model";
 import data from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
+import { Product } from "@/types";
 
 export default async function Home() {
   await connectDB();
   
-  let dbProducts = [];
+  let dbProducts: Product[] = [];
   try {
-    dbProducts = await Product.find({}).lean();
+    dbProducts = (await ProductModel.find({}).lean()) as unknown as Product[];
   } catch (e) {
     console.error("Failed to fetch products from DB", e);
   }
 
   // Focus only on watches from DB, or use mock watch data
   const products = dbProducts.length > 0 
-    ? JSON.parse(JSON.stringify(dbProducts)).filter((p: any) => p.category.toLowerCase().includes('watch') || ['luxury', 'classic', 'sports', 'minimalism'].includes(p.category.toLowerCase()))
+    ? JSON.parse(JSON.stringify(dbProducts)).filter((p: Product) => p.category.toLowerCase().includes('watch') || ['luxury', 'classic', 'sports', 'minimalism'].includes(p.category.toLowerCase()))
     : data.products;
 
-  const featuredProducts = products.filter((p: any) => p.isFeatured).slice(0, 4);
+  const featuredProducts = products.filter((p: Product) => p.isFeatured).slice(0, 4);
   const latestProducts = products.slice(0, 8);
 
   return (
@@ -47,7 +48,7 @@ export default async function Home() {
             <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 to-violet-400 uppercase">Legacy.</span>
           </h1>
           <p className="max-w-xl text-lg sm:text-xl text-zinc-300 mb-10 leading-relaxed font-light">
-            Luxury is not just seen; it's worn. Explore our collection of world-class 
+            Luxury is not just seen; it&apos;s worn. Explore our collection of world-class 
             exclusive wrist watches designed for the modern connoisseur of time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
@@ -101,7 +102,7 @@ export default async function Home() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {featuredProducts.map((p: any) => (
+            {featuredProducts.map((p: Product) => (
               <ProductItem key={p.slug} product={p} />
             ))}
           </div>
@@ -151,7 +152,7 @@ export default async function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {latestProducts.map((p: any) => (
+          {latestProducts.map((p: Product) => (
             <ProductItem key={p.slug} product={p} />
           ))}
         </div>

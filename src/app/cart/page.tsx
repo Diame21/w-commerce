@@ -1,8 +1,9 @@
 import Link from 'next/link';
+import { Product } from '@/types';
 
 export default function CartPage() {
   // Mock data for initial UI - logic will be added with State Management later
-  const cartItems: any[] = [];
+  const cartItems: Product[] = [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
@@ -17,7 +18,7 @@ export default function CartPage() {
           </div>
           <h2 className="text-xl font-bold text-zinc-900 mb-2 dark:text-zinc-100">Your cart is empty</h2>
           <p className="text-zinc-500 mb-8 max-w-xs mx-auto dark:text-zinc-400">
-            Looks like you haven't added anything to your cart yet.
+            Looks like you haven&apos;t added anything to your cart yet.
           </p>
           <Link 
             href="/" 

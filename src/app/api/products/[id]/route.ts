@@ -3,20 +3,20 @@ import connectDB from "@/lib/db";
 import Product from "@/lib/models/product.model";
 import { NextResponse } from "next/server";
 
-export const GET = async (req: Request, { params }: { params: { id: string } }) => {
-    const { id } = params;
+export const GET = async (req: Request, { params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
     await connectDB();
     const product = await Product.findById(id);
     return NextResponse.json(product);
 }
 
-export const PUT = async (req: Request, { params }: { params: { id: string } }) => {
+export const PUT = async (req: Request, { params }: { params: Promise<{ id: string }> }) => {
     const session = await auth();
     if (!session || !session.user?.isAdmin) {
         return NextResponse.json({ message: "Not authorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await params;
     const {
         name,
         slug,
@@ -48,13 +48,13 @@ export const PUT = async (req: Request, { params }: { params: { id: string } }) 
     }
 }
 
-export const DELETE = async (req: Request, { params }: { params: { id: string } }) => {
+export const DELETE = async (req: Request, { params }: { params: Promise<{ id: string }> }) => {
     const session = await auth();
     if (!session || !session.user?.isAdmin) {
         return NextResponse.json({ message: "Not authorized" }, { status: 401 });
     }
 
-    const { id } = params;
+    const { id } = await params;
     await connectDB();
     const product = await Product.findById(id);
 

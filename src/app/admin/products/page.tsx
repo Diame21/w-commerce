@@ -1,7 +1,7 @@
 import Link from "next/link";
 import connectDB from "@/lib/db";
 import Product from "@/lib/models/product.model";
-import { format } from "path"; // formatting logic if needed, or just standard JS
+
 
 export default async function AdminProductsPage() {
   await connectDB();

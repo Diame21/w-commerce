@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-zinc-200 py-12 dark:bg-zinc-950 dark:border-zinc-800">
@@ -12,10 +14,10 @@ export default function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><a href="/" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">Home</a></li>
-              <li><a href="/shop" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">All Series</a></li>
-              <li><a href="/heritage" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">Our Heritage</a></li>
-              <li><a href="/cart" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">Cart</a></li>
+              <li><Link href="/" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">Home</Link></li>
+              <li><Link href="/shop" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">All Series</Link></li>
+              <li><Link href="/heritage" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">Our Heritage</Link></li>
+              <li><Link href="/cart" className="text-sm text-zinc-500 hover:text-indigo-600 dark:text-zinc-400 dark:hover:text-indigo-400">Cart</Link></li>
             </ul>
           </div>
           <div>

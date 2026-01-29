@@ -34,7 +34,7 @@ export type Order = {
 }
 
 export type Product = {
-    _id: string
+    _id?: string
     name: string
     slug: string
     image: string
@@ -49,4 +49,5 @@ export type Product = {
     countInStock: number
     colors?: []
     sizes?: []
+    isFeatured?: boolean
 }
